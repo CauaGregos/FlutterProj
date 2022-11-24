@@ -68,17 +68,21 @@ class _PostNotState extends State<PostNot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("post dados")),
+      appBar: AppBar(title: Text("Lista de dados")),
       body: Container(
         padding: EdgeInsets.all(6),
-        child: Column(children: [
+        child: Column(
+          children: [
           TextField(
               controller: raController,
               decoration: InputDecoration(
                   border: InputBorder.none,
                   icon: Icon(Icons.person),
                   hintText: 'Informe o RA')),
-          ElevatedButton(
+                  
+              Container(
+              margin: EdgeInsets.all(3),
+              child: ElevatedButton(
               onPressed: () {
                 showDialog(
                     context: context,
@@ -92,7 +96,12 @@ class _PostNotState extends State<PostNot> {
                 });
               },
               child: Text("Enviar")),
-          ElevatedButton(
+              
+              ),
+
+              Container(
+                margin: EdgeInsets.all(6),
+                child:  ElevatedButton(
               onPressed: () {
                 Navigator.push(
                     context,
@@ -101,6 +110,8 @@ class _PostNotState extends State<PostNot> {
                     ));
               },
               child: Text("Pegar a api")),
+              ),
+
           (_dadosF == null) ? botao() : buildFutureBuilder(),
         ]),
       ),
