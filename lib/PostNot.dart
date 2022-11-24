@@ -17,31 +17,13 @@ Future<String> fetchData() async {
       headers: {"Content-Type": "application/json"}, body: body);
   if (response.statusCode == 200) {
     String json2 = json.encode(response.body);
-    addItemsToLocalStorage();
     return response.body;
   } else {
     throw Exception('Erro inesperado');
   }
 }
 
-void addItemsToLocalStorage() {
-  storage.setItem('name', 'Abolfazl');
-  storage.setItem('family', 'Roshanzamir');
 
-  final info = json.encode({'name': 'Darush', 'family': 'Roshanzami'});
-  storage.setItem('info', info);
-}
-
-void getitemFromLocalStorage() {
-  final name = storage.getItem('name'); // Abolfazl
-  final family = storage.getItem('family'); // Roshanzamir
-
-  Map<String, dynamic> info = json.decode(storage.getItem('info'));
-  final info_name = info['name'];
-  final info_family = info['family'];
-  print(info_name);
-  print(info_family);
-}
 
 class PostNot extends StatefulWidget {
   const PostNot({Key? key}) : super(key: key);
